@@ -1,0 +1,1 @@
+console.log("Vite +`Express + Handlebars funcionando");
