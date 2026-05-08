@@ -4,14 +4,15 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
+//impotando wiston logger
+import logger from './lib/winston.js';
 import hbs from 'hbs';
-
 // routers
 import indexRouter from './routes/index.js';
 import usersRouter from './routes/users.js';
 import authorRouter from './routes/author.js';
 
-// helpers (ASEGÚRATE que exista este archivo)
+// helpers 
 import { registerHelpers } from './lib/helpers.js';
 
 // fix __dirname
@@ -23,10 +24,16 @@ const app = express();
 // view engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-
 // registrar helpers correctamente
 registerHelpers(hbs);
 
+// Redirigiendo el flujo de logs de morgan
+//a wiston
+// morgan ----> wiston[logs]---->Wiston-----> transports (archivos, consola, etc)
+app.use(morgan('dev', {
+   write: (msg) => logger.http(msg.trim()),
+   }
+  ));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

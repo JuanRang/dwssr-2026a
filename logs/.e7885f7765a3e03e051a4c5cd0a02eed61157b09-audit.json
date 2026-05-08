@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\jrang\\OneDrive\\Desktop\\dwssr-2026a-2-crear-de-proyecto-base\\logs\\.e7885f7765a3e03e051a4c5cd0a02eed61157b09-audit.json",
+    "files": [
+        {
+            "date": 1778256411402,
+            "name": "C:\\Users\\jrang\\OneDrive\\Desktop\\dwssr-2026a-2-crear-de-proyecto-base\\logs\\app-2026-05-08.log",
+            "hash": "b7888e9bcb44aab66f576c98e0962907c94c0bccbaa502c869ddd935605acefe"
+        }
+    ],
+    "hashType": "sha256"
+}

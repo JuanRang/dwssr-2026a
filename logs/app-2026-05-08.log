@@ -1,0 +1,24 @@
+{"level":"info","message":"Ruta de prueba de log accedida","timestamp":"2026-05-08T16:09:29.794Z"}
+{"level":"error","message":"Esto es una prueba de log tipo Error","timestamp":"2026-05-08T16:09:29.808Z"}
+{"level":"warn","message":"Esto es una prueba de log tipo Warn","timestamp":"2026-05-08T16:09:29.810Z"}
+{"level":"info","message":"Esto es una prueba de log tipo Info","timestamp":"2026-05-08T16:09:29.813Z"}
+{"level":"info","message":"Ruta de prueba de log accedida","timestamp":"2026-05-08T16:10:29.354Z"}
+{"level":"error","message":"Esto es una prueba de log tipo Error","timestamp":"2026-05-08T16:10:29.365Z"}
+{"level":"warn","message":"Esto es una prueba de log tipo Warn","timestamp":"2026-05-08T16:10:29.366Z"}
+{"level":"info","message":"Esto es una prueba de log tipo Info","timestamp":"2026-05-08T16:10:29.367Z"}
+{"level":"info","message":"Ruta de prueba de log accedida","timestamp":"2026-05-08T16:12:43.191Z"}
+{"level":"error","message":"Esto es una prueba de log tipo Error","timestamp":"2026-05-08T16:12:43.200Z"}
+{"level":"warn","message":"Esto es una prueba de log tipo Warn","timestamp":"2026-05-08T16:12:43.202Z"}
+{"level":"info","message":"Esto es una prueba de log tipo Info","timestamp":"2026-05-08T16:12:43.202Z"}
+{"level":"info","message":"Ruta de prueba de log accedida","timestamp":"2026-05-08T16:16:14.059Z"}
+{"level":"error","message":"Esto es una prueba de log tipo Error","timestamp":"2026-05-08T16:16:14.065Z"}
+{"level":"warn","message":"Esto es una prueba de log tipo Warn","timestamp":"2026-05-08T16:16:14.066Z"}
+{"level":"info","message":"Esto es una prueba de log tipo Info","timestamp":"2026-05-08T16:16:14.067Z"}
+{"level":"info","message":"Ruta de prueba de log accedida","timestamp":"2026-05-08T16:16:28.619Z"}
+{"level":"error","message":"Esto es una prueba de log tipo Error","timestamp":"2026-05-08T16:16:28.620Z"}
+{"level":"warn","message":"Esto es una prueba de log tipo Warn","timestamp":"2026-05-08T16:16:28.621Z"}
+{"level":"info","message":"Esto es una prueba de log tipo Info","timestamp":"2026-05-08T16:16:28.621Z"}
+{"level":"info","message":"Ruta de prueba de log accedida","timestamp":"2026-05-08T16:17:25.755Z"}
+{"level":"error","message":"Esto es una prueba de log tipo Error","timestamp":"2026-05-08T16:17:25.762Z"}
+{"level":"warn","message":"Esto es una prueba de log tipo Warn","timestamp":"2026-05-08T16:17:25.763Z"}
+{"level":"info","message":"Esto es una prueba de log tipo Info","timestamp":"2026-05-08T16:17:25.765Z"}
