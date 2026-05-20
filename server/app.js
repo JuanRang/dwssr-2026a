@@ -4,61 +4,60 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
-//impotando wiston logger
+
+// Importando winston para logging
 import logger from './lib/winston.js';
-import hbs from 'hbs';
-// routers
+
+// Importando enrutadores
 import indexRouter from './routes/index.js';
 import usersRouter from './routes/users.js';
 import authorRouter from './routes/author.js';
 
-// helpers 
-import { registerHelpers } from './lib/helpers.js';
+// Configuración de handlebars
+import { configureHandlebars } from './lib/handlebars.js';
 
-// fix __dirname
+// 🔧 Reemplazo correcto de __dirname en ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+logger.info("Creando la instancia de express");
 const app = express();
 
-// view engine
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
-// registrar helpers correctamente
-registerHelpers(hbs);
+logger.info("Inicia configuración de express");
+configureHandlebars(app);
 
-// Redirigiendo el flujo de logs de morgan
-//a wiston
-// morgan ----> wiston[logs]---->Wiston-----> transports (archivos, consola, etc)
+// 🔥 Morgan → Winston
 app.use(morgan('dev', {
-   write: (msg) => logger.http(msg.trim()),
-   }
-  ));
-app.use(morgan('dev'));
+  stream: {
+    write: (message) => logger.http(message.trim()),
+  },
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// estáticos
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '..', 'dist', '.vite')));
+// Archivos estáticos generales
+app.use(express.static(path.join(__dirname, '../public')));
+
+// Configuración para producción
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, '../dist')));
+  console.log("Ruta producción: " + path.join(__dirname, '../dist'));
 }
 
-app.use(express.static(path.join(__dirname, '..', 'public')));
-
-// rutas
+// Rutas
 app.use(['/', '/index'], indexRouter);
 app.use('/users', usersRouter);
 app.use('/author', authorRouter);
 
 // 404
-app.use((req, res, next) => {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
-// error handler
-//eslint-disable-next-line no-unused-vars
-app.use(function (err, req, res, next) {
+// Manejador de errores
+app.use((err, req, res) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 

@@ -5,30 +5,30 @@
  */
 
 import app from '../app.js';
-import debugLib from 'debug';
-import http from 'node:http';
-
-const debug = debugLib('dwssr-2026a:server');
-const info = debugLib('dwssr:info');
+import debug from 'debug';
+const serverDebug = debug('dwssr:server');
+const info = debug('dwssr:info');
+import http from 'http';
+//importando el logger winston
+import logger from '../lib/winston.js';
 
 /**
  * Get port from environment and store in Express.
  */
-info('🔍 Normalizing port');
-const port = normalizePort(process.env.PORT || '3000');
-info('💻 port normalized ' + port);
-
+var port = normalizePort(process.env.PORT || '3000');
+info('✅port normalized: ' + port);
 app.set('port', port);
 
 /**
  * Create HTTP server.
  */
-info('🚀 Starting server on port ' + port);
-const server = http.createServer(app);
+logger.info('🚀 Starting server on port ' + port);
+var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
+
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
@@ -36,11 +36,19 @@ server.on('listening', onListening);
 /**
  * Normalize a port into a number, string, or false.
  */
-function normalizePort(val) {
-  const port = parseInt(val, 10);
 
-  if (isNaN(port)) return val;
-  if (port >= 0) return port;
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
 
   return false;
 }
@@ -48,13 +56,17 @@ function normalizePort(val) {
 /**
  * Event listener for HTTP server "error" event.
  */
-function onError(error) {
-  if (error.syscall !== 'listen') throw error;
 
-  const bind = typeof port === 'string'
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
     ? 'Pipe ' + port
     : 'Port ' + port;
 
+  // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
       console.error(bind + ' requires elevated privileges');
@@ -72,12 +84,11 @@ function onError(error) {
 /**
  * Event listener for HTTP server "listening" event.
  */
+
 function onListening() {
-  const addr = server.address();
-  const bind = typeof addr === 'string'
+  var addr = server.address();
+  var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-
-  debug('🎤 Listening on ' + bind);
-  info(`🔊 Server is listening on ${bind}`);
+  debug('📢 Listening on ' + bind);
 }

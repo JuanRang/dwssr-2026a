@@ -118,3 +118,18 @@
   level: 'info',
   timestamp: '08-05-2026 10:17:25'
 }
+{
+  message: 'Creando la instancia de express',
+  level: 'info',
+  timestamp: '20-05-2026 10:45:28'
+}
+{
+  message: 'Inicia configuración de express',
+  level: 'info',
+  timestamp: '20-05-2026 10:45:28'
+}
+{
+  message: '🚀 Starting server on port 3000',
+  level: 'info',
+  timestamp: '20-05-2026 10:45:28'
+}
